@@ -32,7 +32,18 @@
                                 <td>{{$p->description}}</td>
                                 <td>{{$p->category->name}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                          Actions
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <li><a class="dropdown-item" href="{{route('product.edit',$p->id)}}">Edit <i class="fa-solid fa-pen-to-square"></i>
+
+                                          </a></li>
+                                          <li><a class="dropdown-item" href="#">Delete <i class="fa-solid fa-trash-can"></i></a></li>
+                                        </ul>
+                                      </div>
+                                    
                                 </td>
                             </tr>
                         @endforeach

@@ -63,7 +63,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $categories=Category::all();
+        return view('product.edit',compact('categories','product'));
     }
 
     /**
@@ -73,9 +74,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(\App\Http\Requests\StoreProductRequest $request, Product $product)
     {
-        //
+        $product->fill($request->all());
+        $product->save();
+
+        return redirect()->route('product.index')->with('success','Product updated successfully');
     }
 
     /**

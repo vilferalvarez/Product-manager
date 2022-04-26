@@ -4,14 +4,14 @@
 </div>
 <div class="mb-3">
     <label for="name" class="form-label">Name</label>
-    <input type="text" class="form-control" id="name" name="name">
+<input type="text" class="form-control" id="name" name="name" value="{{(isset($product))?$product->name:null}}">
     @error('name')
         <p style="color:red">{{$message}}</p>
     @enderror
 </div>
 <div class="mb-3">
     <label for="description" class="form-label">Description</label>
-    <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+    <textarea class="form-control" id="description" rows="3" name="description">{{(isset($product))?$product->description:null}}</textarea>
     @error('description')
         <p style="color:red">{{$message}}</p>
     @enderror
@@ -22,7 +22,7 @@
         
         @foreach($categories as $category)
             
-            <option value="{{$category->id}}">{{$category->name}}</option>
+            <option value="{{$category->id}}" @if($category->id==$product->category_id) selected @endif>{{$category->name}}</option>
             
         @endforeach
     </select>
