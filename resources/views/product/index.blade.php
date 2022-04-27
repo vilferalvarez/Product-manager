@@ -37,10 +37,17 @@
                                           Actions
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <li><a class="dropdown-item" href="{{route('product.edit',$p->id)}}">Edit <i class="fa-solid fa-pen-to-square"></i>
-
-                                          </a></li>
-                                          <li><a class="dropdown-item" href="#">Delete <i class="fa-solid fa-trash-can"></i></a></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('product.edit',$p->id)}}">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+                                        </li>
+                                        <li>
+                                            <form action="{{route('product.destroy',$p->id)}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="dropdown-item" value="Delete" style="display:inline;">Delete<i class="fa-solid fa-trash-can"></i></button>
+                                            </form>
+                                           
+                                        </li>
                                         </ul>
                                       </div>
                                     
